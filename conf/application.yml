@@ -1,0 +1,3 @@
+dtc:
+  port: 8098
+  contextPath: /dtc
