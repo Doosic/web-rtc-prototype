@@ -22,23 +22,12 @@ app.set('port', port);
  */
 
 var server = http.createServer(app);
-const wsServer = socketIo(server);
 
 /**
  * Listen on provided port, on all network interfaces.
  */
 
-wsServer.on("connection", (socket) => {
-  console.log(socket);
-})
-
-server.listen(properties.port, function(err){
-  if (err){
-    console.log("Error in server setup")
-  }
-  console.log("Server listening on Port", properties.port);
-})
-// server.listen(port);
+server.listen(port);
 server.on('error', onError);
 server.on('listening', onListening);
 

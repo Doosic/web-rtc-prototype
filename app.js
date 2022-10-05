@@ -4,12 +4,17 @@ var express = require('express');
 var path = require('path');
 var cookieParser = require('cookie-parser');
 var logger = require('morgan');
+const cors = require('cors');
+const websocket = require('./modules/socket')
 var sassMiddleware = require('node-sass-middleware');
 
 var indexRouter = require('./routes');
 var usersRouter = require('./routes/users');
 
+const {dtc: properties} = require("./libs/properties");
+
 var app = express();
+var server = require("http").createServer(app);
 
 // view engine setup
 app.set('views', path.join(__dirname, 'views'));
@@ -26,6 +31,8 @@ app.use(sassMiddleware({
   sourceMap: true
 }));
 app.use(express.static(path.join(__dirname, 'public')));
+
+app.use(cors());
 
 app.use('/', indexRouter);
 app.use('/users', usersRouter);
@@ -47,5 +54,10 @@ app.use(function(err, req, res, next) {
 });
 
 
+
+websocket(server, app);
+server.listen(properties.port, function () {
+  console.log("socket io server listening on port " + properties.port);
+});
 
 module.exports = app;
