@@ -3,8 +3,15 @@ import App from "./App.vue";
 import router from "./router";
 import store from "./store";
 import vuetify from './plugins/vuetify'
+import vueMaterial from 'vue-material';
+import io from 'socket.io-client'
+
+var socket = io('http://localhost:8098');
+
+Vue.use(vueMaterial);
 
 Vue.config.productionTip = false;
+Vue.prototype.$socket = socket;
 
 new Vue({
   router,
