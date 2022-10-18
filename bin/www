@@ -8,7 +8,7 @@ var app = require('../app');
 var debug = require('debug')('web-rtc-vue:server');
 var http = require('http');
 const socketIo = require("socket.io");
-const {dtc: properties} = require("../libs/properties");
+const {server: properties} = require("../libs/properties");
 
 /**
  * Get port from environment and store in Express.

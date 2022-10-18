@@ -11,7 +11,7 @@ var socket = io('http://localhost:8098');
 Vue.use(vueMaterial);
 
 Vue.config.productionTip = false;
-Vue.prototype.$socket = socket;
+Vue.prototype.$socketIo = socket;
 
 new Vue({
   router,

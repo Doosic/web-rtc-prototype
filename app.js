@@ -11,7 +11,7 @@ var sassMiddleware = require('node-sass-middleware');
 var indexRouter = require('./routes');
 var usersRouter = require('./routes/users');
 
-const {dtc: properties} = require("./libs/properties");
+const {server: properties} = require("./libs/properties");
 
 var app = express();
 var server = require("http").createServer(app);

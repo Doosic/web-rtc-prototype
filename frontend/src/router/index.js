@@ -1,29 +1,20 @@
 import Vue from "vue";
 import VueRouter from "vue-router";
-import HomeView from "../views/HomeView.vue";
 
 Vue.use(VueRouter);
 
 const routes = [
   {
     path: "/",
-    name: "home",
-    component: HomeView,
+    name: "createMeetingRoom",
+    component: () =>
+        import(/* webpackChunkName: "chatMain" */ "../views/room/createMeetingRoom")
   },
   {
-    path: "/about",
-    name: "about",
-    // route level code-splitting
-    // this generates a separate chunk (about.[hash].js) for this route
-    // which is lazy-loaded when the route is visited.
+    path: "/conference",
+    name: "conferenceRoom",
     component: () =>
-      import(/* webpackChunkName: "about" */ "../views/AboutView.vue"),
-  },
-  {
-    path: "/chat",
-    name: "chatMain",
-    component: () =>
-        import(/* webpackChunkName: "chatMain" */ "../views/chat/chatMain.vue")
+        import(/* webpackChunkName: "chatMain" */ "../views/videoConference/conferenceRoom")
   }
 ];
 
